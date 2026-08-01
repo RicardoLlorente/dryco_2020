@@ -437,223 +437,44 @@ const datosMetro2020 = {
 const datosAmistosos2020 = {
   fixture: []
 };
-// Renderizador simplificado para la estructura del fixture de Metro
-function cargarFixtureMetro(fixtureData, containerId) {
-  const container = document.getElementById(containerId);
+// Función principal para renderizar el fixture
+function cargarFixture() {
+  const container = document.getElementById('fixture-container');
   if (!container) return;
-
-  if (!fixtureData || fixtureData.length === 0) {
-    container.innerHTML = `<p style="color: #888; text-align: center; padding: 20px;">No hay partidos registrados aún para el Metro.</p>`;
-    return;
-  }
 
   let htmlContent = '';
 
-  fixtureData.forEach(f => {
-    let resultado = '';
-    if (f.gl > f.gv) resultado = f.local === 'Dryco' ? 'Victoria' : 'Derrota';
-    else if (f.gl < f.gv) resultado = f.visitante === 'Dryco' ? 'Victoria' : 'Derrota';
-    else if (f.gl === f.gv && f.jugado) resultado = 'Empate';
-
-    let claseBadge = resultado === 'Victoria' ? 'victoria' : resultado === 'Derrota' ? 'derrota' : 'empate';
-
-    htmlContent += `
-      <div class="match-card">
-        <div class="card-header">
-          <div>
-            <span class="fecha-num">FECHA ${f.fecha}</span>
-            <span class="fecha-date">${f.diaHora}</span>
-          </div>
-          <span class="status-badge">${f.jugado ? 'JUGADO' : 'PENDIENTE'}</span>
-        </div>
-
-        <div class="card-body">
-          <div class="teams-info">
-            <strong>${f.local || 'A Confirmar'}</strong> <span class="vs">vs</span> <strong>${f.visitante || 'A Confirmar'}</strong>
-            <div style="font-size: 0.75rem; color: #aaa; margin-top: 4px;">📍 ${f.cancha}</div>
-          </div>
-          <div class="score-box">
-            ${f.jugado ? `<span class="badge-resultado ${claseBadge}">${resultado}</span>` : ''}
-            <div class="score-numbers">${f.jugado ? `${f.gl} : ${f.gv}` : '- : -'}</div>
-          </div>
-        </div>
-      </div>
-    `;
-  });
-
-  container.innerHTML = htmlContent;
-}
-// Renderizar tabla de posiciones para la Liga Palermo
-function renderizarTabla(fixture, miClubNombre) {
-  const equipos = {};
-
-  fixture.forEach(f => {
-    if (!f.todosLosPartidos) return;
-
-    f.todosLosPartidos.forEach(p => {
-      if (p.gl === null || p.gv === null) return; // ignora partidos no jugados
-
-      if (!equipos[p.local]) equipos[p.local] = { nombre: p.local, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, gd: 0, pts: 0 };
-      if (!equipos[p.visitante]) equipos[p.visitante] = { nombre: p.visitante, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, gd: 0, pts: 0 };
-
-      const loc = equipos[p.local];
-      const vis = equipos[p.visitante];
-
-      loc.pj++; vis.pj++;
-      loc.gf += p.gl; loc.gc += p.gv;
-      vis.gf += p.gv; vis.gc += p.gl;
-
-      if (p.gl > p.gv) { loc.g++; loc.pts += 2; vis.p++; }
-      else if (p.gl < p.gv) { vis.g++; vis.pts += 2; loc.p++; }
-      else { loc.e++; loc.pts += 1; vis.e++; vis.pts += 1; }
-
-      loc.gd = loc.gf - loc.gc;
-      vis.gd = vis.gf - vis.gc;
-    });
-  });
-
-  const tablaData = Object.values(equipos).sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
-  inyectarTabla(tablaData, miClubNombre);
-}
-// Cálculo de tabla para fixture del Metro
-function renderizarTablaMetro(fixture, miClubNombre) {
-  const equipos = {};
-
-  fixture.forEach(p => {
-    if (!p.jugado || !p.local || !p.visitante) return;
-
-    if (!equipos[p.local]) equipos[p.local] = { nombre: p.local, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, gd: 0, pts: 0 };
-    if (!equipos[p.visitante]) equipos[p.visitante] = { nombre: p.visitante, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, gd: 0, pts: 0 };
-
-    const loc = equipos[p.local];
-    const vis = equipos[p.visitante];
-
-    loc.pj++; vis.pj++;
-    loc.gf += p.gl; loc.gc += p.gv;
-    vis.gf += p.gv; vis.gc += p.gl;
-
-    if (p.gl > p.gv) { loc.g++; loc.pts += 2; vis.p++; }
-    else if (p.gl < p.gv) { vis.g++; vis.pts += 2; loc.p++; }
-    else { loc.e++; loc.pts += 1; vis.e++; vis.pts += 1; }
-
-    loc.gd = loc.gf - loc.gc;
-    vis.gd = vis.gf - vis.gc;
-  });
-
-  const tablaData = Object.values(equipos).sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
-  inyectarTabla(tablaData, miClubNombre);
-}
-
-// Inyección común en el DOM para el HTML de la tabla
-function inyectarTabla(tablaData, miClubNombre) {
-  const tbody = document.getElementById('body-tabla');
-  if (!tbody) return;
-
-  if (tablaData.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #888;">Sin datos disponibles para calcular la tabla</td></tr>`;
-    return;
-  }
-
-  tbody.innerHTML = tablaData.map((e, index) => {
-    const esMiClub = e.nombre.toLowerCase().includes(miClubNombre.toLowerCase());
-    const gdSigno = e.gd > 0 ? `+${e.gd}` : e.gd;
-    
-    return `
-      <tr class="${esMiClub ? 'mi-club-row' : ''}">
-        <td>${index + 1}</td>
-        <td class="club-nombre">${e.nombre}</td>
-        <td>${e.pj}</td>
-        <td>${e.g}</td>
-        <td>${e.e}</td>
-        <td>${e.p}</td>
-        <td>${gdSigno}</td>
-        <td class="pts-col">${e.pts}</td>
-      </tr>
-    `;
-  }).join('');
-}
-
-// Variable global para seguir el torneo actual
-let torneoActual = 'palermo';
-
-// Función para cambiar entre las pestañas de torneos (Palermo, Metro, Amistosos)
-function cambiarTorneo(torneo) {
-  torneoActual = torneo;
-
-  // 1. Ocultar todos los contenidos de torneos
-  document.getElementById('vista-palermo').style.display = 'none';
-  document.getElementById('seccion-metro').style.display = 'none';
-  document.getElementById('seccion-amistosos').style.display = 'none';
-
-  // 2. Desactivar clases activas de pestañas
-  document.getElementById('tab-palermo').classList.remove('active');
-  document.getElementById('tab-metro').classList.remove('active');
-  document.getElementById('tab-amistosos').classList.remove('active');
-
-  // 3. Mostrar la sección elegida y activar la pestaña correspondiente
-  const tituloTabla = document.getElementById('titulo-tabla');
-
-  if (torneo === 'palermo') {
-    document.getElementById('vista-palermo').style.display = 'block';
-    document.getElementById('tab-palermo').classList.add('active');
-    if (tituloTabla) tituloTabla.textContent = '📊 TABLA DE POSICIONES - LIGA PALERMO';
-    cargarFixtureGenérico(datosDryco2020.fixture, 'fixture-container');
-    renderizarTabla(datosDryco2020.fixture, 'Dryco');
-  } else if (torneo === 'metro') {
-    document.getElementById('seccion-metro').style.display = 'block';
-    document.getElementById('tab-metro').classList.add('active');
-    if (tituloTabla) tituloTabla.textContent = '📊 TABLA DE POSICIONES - METROPOLITANO';
-    cargarFixtureMetro(datosMetro2020.fixture, 'contenedor-fixture-metro');
-    renderizarTablaMetro(datosMetro2020.fixture, 'Dryco');
-  } else if (torneo === 'amistosos') {
-    document.getElementById('seccion-amistosos').style.display = 'block';
-    document.getElementById('tab-amistosos').classList.add('active');
-    if (tituloTabla) tituloTabla.textContent = '📊 TABLA DE POSICIONES - AMISTOSOS';
-    cargarFixtureGenérico(datosAmistosos2020.fixture, 'contenedor-fixture-amistosos');
-    renderizarTabla(datosAmistosos2020.fixture, 'Dryco');
-  }
-}
-
-// Renderizador genérico para fixtures complejos (Palermo / Amistosos)
-function cargarFixtureGenérico(fixtureData, containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  if (!fixtureData || fixtureData.length === 0) {
-    container.innerHTML = `<p style="color: #888; text-align: center; padding: 20px;">No hay partidos registrados aún para este torneo.</p>`;
-    return;
-  }
-
-  let htmlContent = '';
-
-  fixtureData.forEach(f => {
+  datosDryco2020.fixture.forEach(f => {
+    // 1. Filas de partidos del desplegable
     let filasPartidosHTML = '';
     if (f.todosLosPartidos && f.todosLosPartidos.length > 0) {
       filasPartidosHTML = f.todosLosPartidos.map(p => `
         <div class="partido-row ${p.esMiClub ? 'destacado' : ''}">
           <span class="equipos">${p.local} vs ${p.visitante}</span>
-          <span class="resultado-mini">${p.gl !== null ? p.gl : '-'}-${p.gv !== null ? p.gv : '-'}</span>
+          <span class="resultado-mini">${p.gl}-${p.gv}</span>
         </div>
       `).join('');
     } else {
       filasPartidosHTML = `<div class="partido-row"><span>Sin detalles de otros partidos</span></div>`;
     }
 
+    // 2. Determinar la clase CSS del badge de resultado
     let claseBadge = '';
     if (f.resultado === 'Victoria') claseBadge = 'victoria';
     else if (f.resultado === 'Derrota') claseBadge = 'derrota';
     else if (f.resultado === 'Empate') claseBadge = 'empate';
 
+    // 3. Generar la tarjeta HTML
     htmlContent += `
       <div class="match-card">
         <div class="card-header">
           <div>
             <span class="fecha-num">FECHA ${f.fecha}</span>
-            <span class="fecha-date">---${f.diaFecha || ''}---</span>
+            <span class="fecha-date">---${f.diaFecha}---</span>
           </div>
           <div style="display: flex; gap: 10px; align-items: center;">
-            <span style="color: #aaa; font-size: 0.75rem;">🌧️ ${f.clima ? f.clima.temp : '--°'} 💧${f.clima ? f.clima.lluvia : '--%'}</span>
-            <span class="status-badge">${f.estado || 'PROGRAMADO'}</span>
+            <span style="color: #aaa; font-size: 0.75rem;">🌧️ ${f.clima.temp} 💧${f.clima.lluvia}</span>
+            <span class="status-badge">${f.estado}</span>
           </div>
         </div>
 
@@ -666,7 +487,7 @@ function cargarFixtureGenérico(fixtureData, containerId) {
               </div>
               <div class="score-box">
                 ${f.resultado ? `<span class="badge-resultado ${claseBadge}">${f.resultado}</span>` : ''}
-                <div class="score-numbers">${f.miPartido.gl !== null ? f.miPartido.gl : '-'} : ${f.miPartido.gv !== null ? f.miPartido.gv : '-'}</div>
+                <div class="score-numbers">${f.miPartido.gl} : ${f.miPartido.gv}</div>
               </div>
             `
           }
@@ -685,11 +506,70 @@ function cargarFixtureGenérico(fixtureData, containerId) {
     `;
   });
 
+  // Inyectamos todo el HTML generado de una sola vez
   container.innerHTML = htmlContent;
+
+  // Asignamos los clics a las tarjetas recién creadas
   activarEventosDesplegables();
 }
 
-// Renderizador simplificado para la estructura del fixture de Metro
+function calcularTablaPosiciones(fixture) {
+  const equipos = {};
+
+  // 1. Recorrer cada fecha y procesar partidos jugados
+  fixture.forEach(f => {
+    if (f.todosLosPartidos && Array.isArray(f.todosLosPartidos)) {
+      f.todosLosPartidos.forEach(p => {
+        // Ignorar si el partido no se jugó o no tiene marcadores
+        if (p.gl === null || p.gv === null) return;
+
+        // Inicializar equipo Local si no existe
+        if (!equipos[p.local]) {
+          equipos[p.local] = { nombre: p.local, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, gd: 0, pts: 0 };
+        }
+        // Inicializar equipo Visitante si no existe
+        if (!equipos[p.visitante]) {
+          equipos[p.visitante] = { nombre: p.visitante, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, gd: 0, pts: 0 };
+        }
+
+        const loc = equipos[p.local];
+        const vis = equipos[p.visitante];
+
+        loc.pj++;
+        vis.pj++;
+        loc.gf += p.gl;
+        loc.gc += p.gv;
+        vis.gf += p.gv;
+        vis.gc += p.gl;
+
+        if (p.gl > p.gv) {
+          loc.g++;
+          loc.pts += 2;
+          vis.p++;
+        } else if (p.gl < p.gv) {
+          vis.g++;
+          vis.pts += 2;
+          loc.p++;
+        } else {
+          loc.e++;
+          loc.pts += 1;
+          vis.e++;
+          vis.pts += 1;
+        }
+
+        loc.gd = loc.gf - loc.gc;
+        vis.gd = vis.gf - vis.gc;
+      });
+    }
+  });
+
+  // 2. Convertir a array y ordenar (Puntos > Diferencia de goles > Goles a favor)
+  return Object.values(equipos).sort((a, b) => {
+    if (b.pts !== a.pts) return b.pts - a.pts;
+    if (b.gd !== a.gd) return b.gd - a.gd;
+    return b.gf - a.gf;
+  });
+}
 
 // Event listener para abrir / cerrar desplegables
 function activarEventosDesplegables() {
@@ -707,7 +587,30 @@ function activarEventosDesplegables() {
 }
 
 
-
+// Renderizar la tabla dinámica y pintarla en el DOM
+function renderizarTabla(miClubNombre) {
+  const tablaData = calcularTablaPosiciones(datosDryco2020.fixture);
+  const tbody = document.getElementById('body-tabla');
+  if (!tbody) return;
+  
+  tbody.innerHTML = tablaData.map((e, index) => {
+    const esMiClub = e.nombre.toLowerCase().includes(miClubNombre.toLowerCase());
+    const gdSigno = e.gd > 0 ? `+${e.gd}` : e.gd;
+    
+    return `
+      <tr class="${esMiClub ? 'mi-club-row' : ''}">
+        <td>${index + 1}</td>
+        <td class="club-nombre">${e.nombre}</td>
+        <td>${e.pj}</td>
+        <td>${e.g}</td>
+        <td>${e.e}</td>
+        <td>${e.p}</td>
+        <td>${gdSigno}</td>
+        <td class="pts-col">${e.pts}</td>
+      </tr>
+    `;
+  }).join('');
+}
 
 // Renderizar el listado de canchas
 function renderizarCanchas() {
@@ -808,9 +711,11 @@ function irATab(nombreTab, idSeccion) {
     }
   }, 50);
 }
-// Evento inicialización al cargar la página
+// Cargar todo cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-  cambiarTorneo('palermo'); // Carga la Liga Palermo por defecto
+  cargarFixture();
+  renderizarTabla('Dryco');
   renderizarCanchas();
   renderizarPracticas();
 });
+

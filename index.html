@@ -1,823 +1,155 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dryco - Categoría 2020</title>
-  <!-- Fuentes oficiales del sitio -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-  
-  <!-- Archivo CSS Externo -->
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <div class="main-container">
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dryco - Categoría 2020</title>
+    <!-- Fuentes oficiales del sitio -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
     
-    <!-- HEADER PRINCIPAL -->
-    <header class="header">
-      <div class="header-left">
-        <img src="escudo-dryco.png" alt="Escudo Dryco" class="escudo-img">        <div class="title-area">
-          <h1>DRYCO</h1>
-          <p>LIGA PALERMO · SERIE B · CATEGORÍA 2020</p>
-          <a href="#" class="ig-tag">📷 @dryco2020</a>
+    <!-- Archivo CSS Externo -->
+    <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+    <div class="main-container">
+        
+        <!-- HEADER PRINCIPAL -->
+        <header class="header">
+        <div class="header-left">
+            <img src="escudo-dryco.png" alt="Escudo Dryco" class="escudo-img">        <div class="title-area">
+            <h1>DRYCO</h1>
+            <p>LIGA PALERMO · SERIE B · CATEGORÍA 2020</p>
+            <a href="#" class="ig-tag">📷 @dryco2020</a>
+            </div>
         </div>
-      </div>
-      <div class="badge-season">⚽ TEMPORADA 2026</div>
-    </header>
+        <div class="badge-season">⚽ TEMPORADA 2026</div>
+        </header>
 
-    <!-- BARRA NAVEGACIÓN -->
-    <nav class="nav-bar">
-    <a href="#seccion-fixture" style="text-decoration: none;">
-        <button class="nav-btn">⚽ Liga Palermo</button>
-    </a>      
-      <button class="nav-btn">🏅 Metro</button>
-      <button class="nav-btn"> Amistosos</button>
-      <button class="nav-btn">📊 Tabla</button>
-      <button class="nav-btn">📍 Canchas</button>
-      <button class="nav-btn">🏃 Prácticas</button>
-    </nav>
-
-   <!-- RESUMEN DE ESTADÍSTICAS -->
-  <section class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-value">13</div>
-    <div class="stat-label">Jugados</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value">11</div>
-    <div class="stat-label">Ganados</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value">33</div>
-    <div class="stat-label">Goles a Favor</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value">20</div>
-    <div class="stat-label">Puntos</div>
-  </div>
-  </section>
-    <!-- SUB TABS -->
-    <div class="sub-tabs">
-      <div class="sub-tab active">🏆 LIGA PALERMO</div>
-      <div class="sub-tab">🏅 METROPOLITANO</div>
-      <div class="sub-tab">🤝 AMISTOSOS</div>
+<!-- BARRA NAVEGACIÓN -->
+<nav class="nav-bar">
+  <button class="nav-btn" onclick="irA('seccion-fixture')">⚽ Liga Palermo</button>
+  <button class="nav-btn" onclick="alert('Próximamente Metro')">🏅 Metro</button>
+  <button class="nav-btn" onclick="alert('Próximamente Amistosos')">🤝 Amistosos</button>
+  <button class="nav-btn" onclick="irATab('tabla', 'seccion-tabla')">📊 Tabla</button>
+  <button class="nav-btn" onclick="irATab('canchas', 'seccion-canchas')">📍 Canchas</button>
+  <button class="nav-btn" onclick="irA('seccion-practicas')">🏃 Prácticas</button>
+</nav>
+    <!-- RESUMEN DE ESTADÍSTICAS -->
+    <section class="stats-bar">
+    <div class="stat-item">
+        <div class="stat-value">13</div>
+        <div class="stat-label">Jugados</div>
     </div>
-    <div id="vista-palermo">
-    <!-- TÍTULO SECCIÓN -->
-    <div id="seccion-fixture" class="section-title">
-      ⚽ FIXTURE LIGA PALERMO
+    <div class="stat-item">
+        <div class="stat-value">11</div>
+        <div class="stat-label">Ganados</div>
     </div>
-    <!-- TARJETA FECHA 1 -->
-    <div class="match-card">
-      <div class="card-header">
-        <div>
-          <span class="fecha-num">FECHA 1</span>
-          <span class="fecha-date">15/03/2026</span>
-        </div>
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <span style="color: #aaa; font-size: 0.75rem;"></span>
-          <span class="status-badge"></span>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="teams-info">
-          <strong>Fecha Libre</strong>
-        </div>
-        <div class="score-box">
-          
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="btn-ver-partidos">
-            ⚽ VER TODOS LOS PARTIDOS
-        </div>
-        <span class="arrow-icon">▼</span>
+    <div class="stat-item">
+        <div class="stat-value">33</div>
+        <div class="stat-label">Goles a Favor</div>
     </div>
+    <div class="stat-item">
+        <div class="stat-value">20</div>
+        <div class="stat-label">Puntos</div>
     </div>
-        <!-- TARJETA FECHA 2 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 2</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
+    </section>
+        <!-- SUB TABS -->
+        <div class="sub-tabs" id="tabs-torneos">
+            <div id="tab-palermo" class="sub-tab active" onclick="cambiarTorneo('palermo')">🏆 LIGA PALERMO</div>
+            <div id="tab-metro" class="sub-tab" onclick="cambiarTorneo('metro')">🏅 METROPOLITANO</div>
+            <div id="tab-amistosos" class="sub-tab" onclick="cambiarTorneo('amistosos')">🤝 AMISTOSOS</div>
         </div>
+        <!-- CONTENEDORES DE FIXTURES POR TORNEO -->
+        <div id="vista-palermo" class="torneo-content">
+        <div id="seccion-fixture" class="section-title">⚽ FIXTURE LIGA PALERMO</div>
+        <div id="fixture-container"></div>                  
+        </div> 
 
+        <div id="seccion-metro" class="torneo-content" style="display: none;">
+        <div class="section-title">🏅 FIXTURE METROPOLITANO</div>
+        <div id="contenedor-fixture-metro"></div>
+        </div>    
 
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
+        <div id="seccion-amistosos" class="torneo-content" style="display: none;">
+        <div class="section-title">🤝 FIXTURE AMISTOSOS</div>
+        <div id="contenedor-fixture-amistosos"></div>
         </div>
-    </div> 
-    <!-- TARJETA FECHA 3 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 3</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
+<!-- NAVEGACIÓN DE PESTAÑAS -->
+<div class="sub-tabs">
+  <div id="btn-tab-tabla" class="sub-tab active" onclick="cambiarTab('tabla')">📊 TABLA DE POSICIONES</div>
+  <div id="btn-tab-canchas" class="sub-tab" onclick="cambiarTab('canchas')">📍 Canchas</div>
+</div>
+<!-- CONTENIDO: TABLA DE POSICIONES -->
+<div id="seccion-tabla" class="tab-content">
+  <div class="section-title">📊 TABLA DE POSICIONES</div>
+  <div class="tabla-wrapper">
+    <table class="tabla-posiciones">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>CLUB</th>
+          <th>PJ</th>
+          <th>G</th>
+          <th>E</th>
+          <th>P</th>
+          <th>GD</th>
+          <th>PTS</th>
+        </tr>
+      </thead>
+      <tbody id="body-tabla">
+        <!-- Se llena dinámicamente con JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
 
+<!-- CONTENIDO: LISTADO DE CANCHAS -->
+<div id="seccion-canchas" class="tab-content" style="display: none;">
+  <div class="section-title">📍 CANCHAS</div>
+  <div id="contenedor-canchas">
+    <!-- Se llena dinámicamente con JS -->
+  </div>
+</div>
 
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Dryco</strong> 📍 <span class="vs">vs</span> <strong>Sur2000</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">2 : 0</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 4 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 4</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Nuevo América</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 5 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 5</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Dryco</strong> 📍 <span class="vs">vs</span> <strong>Uruguay Buceo</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">2 : 0</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 6 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 6</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Stockolmo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 7</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 7 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 7</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Dryco</strong> 📍 <span class="vs">vs</span> <strong>Exploradores</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">2 : 0</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 8 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 8</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Estudiantes de la Union</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 8</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 9 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 9</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Dryco</strong> 📍 <span class="vs">vs</span> <strong>Terremoto</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 6</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 10 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 10</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 11 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 11</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 12 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 12</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 13 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 13</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 14 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 14</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 15 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 15</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 16 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 16</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 17 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 17</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 18 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 18</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 19 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 19</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 20 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 20</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 21 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 21</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 22 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 22</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 23 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 23</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 24 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 24</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div>  <!-- TARJETA FECHA 25 -->
-    <div class="match-card">
-        <div class="card-header">
-            <div>
-                <span class="fecha-num">FECHA 25</span>
-                <span class="fecha-date">---15/03/2026---</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: #aaa; font-size: 0.75rem;">🌧️ 30° 💧--%</span>
-                <span class="status-badge">JUGADO</span>
-            </div>
-        </div>
-
-
-        <div class="card-body">
-            <div class="teams-info">
-                <strong>Intermezzo</strong> 📍 <span class="vs">vs</span> <strong>Dryco</strong>
-            </div>
-            <div class="score-box">
-                <span class="score-badge"></span>
-                <div class="score-numbers">0 : 2</div>
-            </div>
-        </div>  
-      <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div>
-    </div> 
-</div> 
-
-
-
-   
+    <!-- SECCIÓN PRÁCTICAS -->
+<div id="seccion-practicas" class="practicas-container">
+  <div class="section-title">🏃 PRÁCTICAS</div>
   
+  <div id="contenedor-practicas" class="practicas-grid">
+    <!-- Se genera dinámicamente con JS o podés dejarlo estático -->
   </div>
+</div>
+    
+    </div>
+    <script src="datos.js"></script>
+    </body>
+    </html>
 
-</body>
-</html>
 
 
-
- <!-- <div class="card-footer">
+    <!-- <div class="card-footer">
+            <div class="btn-ver-partidos">
+                ⚽ VER TODOS LOS PARTIDOS
+            </div>
+            <span class="arrow-icon">▼</span>
+        </div> -->
+    <!-- 
+            <div class="card-footer">
         <div class="btn-ver-partidos">
-            ⚽ VER TODOS LOS PARTIDOS
+        ⚽ VER TODOS LOS PARTIDOS
         </div>
         <span class="arrow-icon">▼</span>
-    </div> -->
-<!-- 
-        <div class="card-footer">
-    <div class="btn-ver-partidos">
-      ⚽ VER TODOS LOS PARTIDOS
-    </div>
-    <span class="arrow-icon">▼</span>
-    </div> -->
+        </div> -->
+
+
+<!-- Ejemplo Victoria -->
+<!--<span class="badge-resultado victoria">Victoria</span>-->
+
+<!-- Ejemplo Derrota -->
+<!--<span class="badge-resultado derrota">Derrota</span>-->
+
+<!-- Ejemplo Empate -->
+<!--<span class="badge-resultado empate">Empate</span>-->

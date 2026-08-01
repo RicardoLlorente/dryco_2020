@@ -307,3 +307,353 @@
       letter-spacing: 2px;
       border: 1px solid #333;
     }
+
+    /* BASE DE LOS BADGES DE RESULTADO */
+.badge-resultado {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* VICTORIA */
+.badge-resultado.victoria {
+  background-color: rgba(46, 125, 50, 0.25);
+  color: #4caf50;
+}
+
+/* DERROTA */
+.badge-resultado.derrota {
+  background-color: rgba(198, 40, 40, 0.25);
+  color: #ef5350;
+}
+
+/* EMPATE */
+.badge-resultado.empate {
+  background-color: rgba(245, 124, 0, 0.25);
+  color: #ffb74d;
+}
+
+/* Ocultamos la lista por defecto */
+.lista-partidos-desplegable {
+    display: none; 
+    background-color: #121212;
+    border-top: 1px solid #2a2a2a;
+    padding: 10px 15px;
+}
+
+/* Cuando le agregamos la clase "activa", se muestra */
+.lista-partidos-desplegable.activa {
+    display: block;
+}
+
+/* Estilo para cada fila de partido dentro del desplegable */
+.titulo-desplegable {
+    font-size: 0.7rem;
+    color: #888;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.partido-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    border-bottom: 1px solid #1e1e1e;
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+/* Estilo para resaltar tu partido en la lista */
+.partido-row.destacado {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #ffffff; /* Línea naranja de resalte */
+}
+
+.resultado-mini {
+    background: #000;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid #333;
+}
+
+/* Rotación opcional de la flechita cuando se abre */
+.card-footer .arrow-icon {
+    transition: transform 0.2s ease;
+}
+
+.card-footer.abierto .arrow-icon {
+    transform: rotate(180deg);
+}
+
+
+/* --- Pestañas / Sub-tabs --- */
+.sub-tabs {
+  display: flex;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+}
+
+.sub-tab {
+  flex: 1;
+  text-align: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #888;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.sub-tab:hover {
+  color: #fff;
+  background-color: #282828;
+}
+
+.sub-tab.active {
+  color: #ffffff;
+  background-color: #252525;
+  border-bottom: 3px solid #ffffff;
+}
+
+/* --- Tabla de Posiciones --- */
+.tabla-posiciones {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #181818;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #eee;
+  font-size: 0.9rem;
+}
+
+.tabla-posiciones th, 
+.tabla-posiciones td {
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.tabla-posiciones th {
+  background-color: #222;
+  color: #aaa;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+}
+
+.tabla-posiciones td:nth-child(2) {
+  text-align: left; /* Alinea el nombre del club a la izquierda */
+  font-weight: bold;
+}
+
+.tabla-posiciones tr:nth-child(even) {
+  background-color: #1f1f1f;
+}
+
+/* Destacado para tu club */
+.tabla-posiciones tr.mi-club-row {
+  background-color: rgba(255, 102, 0, 0.15) !important;
+  color: #ffffff;
+  border-left: 4px solid #ffffff;
+}
+
+/* --- Card de Canchas (Acordeón) --- */
+.cancha-card {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.cancha-header {
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cancha-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.cancha-header p {
+  margin: 4px 0 0 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.cancha-body {
+  padding: 14px;
+  border-top: 1px solid #2a2a2a;
+  background-color: #141414;
+}
+
+.cancha-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-map, .btn-waze {
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.btn-map { background-color: #ffffff; color: #fff; }
+.btn-waze { background-color: #333; color: #fff; border: 1px solid #444; }
+
+.cancha-tip {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Wrapper contenedor de la tabla para fondo oscuro y bordes redondeados */
+.tabla-wrapper {
+  background-color: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.tabla-posiciones {
+  width: 100%;
+  border-collapse: collapse;
+  color: #ddd;
+  font-family: 'Barlow', sans-serif;
+}
+
+.tabla-posiciones th {
+  background-color: #222222;
+  color: #888;
+  padding: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+}
+
+.tabla-posiciones td {
+  padding: 12px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #222;
+}
+
+.tabla-posiciones .club-nombre {
+  text-align: left;
+  font-weight: bold;
+  color: #fff;
+}
+
+.tabla-posiciones .pts-col {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Fila de Dryco destacada */
+.tabla-posiciones tr.mi-club-row {
+  background-color: rgba(255, 102, 0, 0.12) !important;
+  border-left: 4px solid #ff6600;
+}
+
+.tabla-posiciones tr.mi-club-row .club-nombre {
+  color: #ff6600;
+}
+
+
+/* --- Sección Prácticas --- */
+.practicas-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.practicas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.practica-card {
+  background-color: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.practica-dia {
+  color: #ffcc00; /* Amarillo brillante para el día */
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.practica-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #eee;
+  font-size: 0.95rem;
+}
+
+.practica-info .lugar-texto {
+  color: #aaa;
+}
+
+/* Botones con los colores idénticos a la imagen */
+.practica-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-practica {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s;
+}
+
+.btn-practica:hover {
+  opacity: 0.85;
+}
+
+/* Botón Maps Verde */
+.btn-maps {
+  background-color: #2eac54;
+  color: #ffffff;
+}
+
+/* Botón Waze Celeste Cyan */
+.btn-waze-cyan {
+  background-color: #00bcd4;
+  color: #000000;
+}
