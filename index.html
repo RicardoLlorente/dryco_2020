@@ -1,155 +1,249 @@
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dryco - Categoría 2020</title>
     <!-- Fuentes oficiales del sitio -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <!-- Archivo CSS Externo -->
-    <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="main-container">
-        
-        <!-- HEADER PRINCIPAL -->
-        <header class="header">
+      <!-- HEADER PRINCIPAL -->
+      <header class="header">
         <div class="header-left">
-            <img src="escudo-dryco.png" alt="Escudo Dryco" class="escudo-img">        <div class="title-area">
+          <img src="escudo-dryco.png" alt="Escudo Dryco" class="escudo-img" />
+          <div class="title-area">
             <h1>DRYCO</h1>
             <p>LIGA PALERMO · SERIE B · CATEGORÍA 2020</p>
             <a href="#" class="ig-tag">📷 @dryco2020</a>
-            </div>
+          </div>
         </div>
         <div class="badge-season">⚽ TEMPORADA 2026</div>
-        </header>
+      </header>
 
-<!-- BARRA NAVEGACIÓN -->
-<nav class="nav-bar">
-  <button class="nav-btn" onclick="irA('seccion-fixture')">⚽ Liga Palermo</button>
-  <button class="nav-btn" onclick="alert('Próximamente Metro')">🏅 Metro</button>
-  <button class="nav-btn" onclick="alert('Próximamente Amistosos')">🤝 Amistosos</button>
-  <button class="nav-btn" onclick="irATab('tabla', 'seccion-tabla')">📊 Tabla</button>
-  <button class="nav-btn" onclick="irATab('canchas', 'seccion-canchas')">📍 Canchas</button>
-  <button class="nav-btn" onclick="irA('seccion-practicas')">🏃 Prácticas</button>
-</nav>
-    <!-- RESUMEN DE ESTADÍSTICAS -->
-    <section class="stats-bar">
-    <div class="stat-item">
-        <div class="stat-value">13</div>
-        <div class="stat-label">Jugados</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-value">11</div>
-        <div class="stat-label">Ganados</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-value">33</div>
-        <div class="stat-label">Goles a Favor</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-value">20</div>
-        <div class="stat-label">Puntos</div>
-    </div>
-    </section>
-        <!-- SUB TABS -->
-        <div class="sub-tabs" id="tabs-torneos">
-            <div id="tab-palermo" class="sub-tab active" onclick="cambiarTorneo('palermo')">🏆 LIGA PALERMO</div>
-            <div id="tab-metro" class="sub-tab" onclick="cambiarTorneo('metro')">🏅 METROPOLITANO</div>
-            <div id="tab-amistosos" class="sub-tab" onclick="cambiarTorneo('amistosos')">🤝 AMISTOSOS</div>
+      <!-- BARRA NAVEGACIÓN -->
+      <!-- NAV BAR CORREGIDA -->
+      <nav class="nav-bar">
+        <button
+          class="nav-btn"
+          onclick="cambiarTorneoYScroll('palermo', 'vista-palermo')"
+        >
+          ⚽ Liga Palermo
+        </button>
+        <button
+          class="nav-btn"
+          onclick="cambiarTorneoYScroll('metro', 'seccion-metro')"
+        >
+          🏅 Metro
+        </button>
+        <button
+          class="nav-btn"
+          onclick="cambiarTorneoYScroll('amistosos', 'seccion-amistosos')"
+        >
+          🤝 Amistosos
+        </button>
+        <button class="nav-btn" onclick="irATab('tabla', 'seccion-tabla')">
+          📊 Tabla
+        </button>
+        <button class="nav-btn" onclick="irATab('canchas', 'seccion-canchas')">
+          📍 Canchas
+        </button>
+        <button class="nav-btn" onclick="irA('seccion-practicas')">
+          🏃 Prácticas
+        </button>
+      </nav>
+      <!-- RESUMEN DE ESTADÍSTICAS -->
+      <div class="section-title">Estadisticas Totales</div>
+      <section class="stats-bar">
+        <div class="stat-item">
+          <div id="stat-pj" class="stat-value">0</div>
+          <div class="stat-label">Jugados</div>
         </div>
-        <!-- CONTENEDORES DE FIXTURES POR TORNEO -->
-        <div id="vista-palermo" class="torneo-content">
-        <div id="seccion-fixture" class="section-title">⚽ FIXTURE LIGA PALERMO</div>
-        <div id="fixture-container"></div>                  
-        </div> 
+        <div class="stat-item">
+          <div id="stat-pg" class="stat-value">0</div>
+          <div class="stat-label">Ganados</div>
+        </div>
+        <div class="stat-item">
+          <div id="stat-pe" class="stat-value">0</div>
+          <div class="stat-label">Empatados</div>
+        </div>
+        <div class="stat-item">
+          <div id="stat-pp" class="stat-value">0</div>
+          <div class="stat-label">Perdidos</div>
+        </div>
+        <div class="stat-item">
+          <div id="stat-gf" class="stat-value">0</div>
+          <div class="stat-label">Goles a Favor</div>
+        </div>
+        <div class="stat-item">
+          <div id="stat-gc" class="stat-value">0</div>
+          <div class="stat-label">Goles en Contra</div>
+        </div>
+      </section>
+      <!-- SUB TABS -->
+      <div class="sub-tabs" id="tabs-torneos">
+        <div
+          id="tab-palermo"
+          class="sub-tab active"
+          onclick="cambiarTorneo('palermo')"
+        >
+          🏆 LIGA PALERMO
+        </div>
+        <div id="tab-metro" class="sub-tab" onclick="cambiarTorneo('metro')">
+          🏅 METROPOLITANO
+        </div>
+        <div
+          id="tab-amistosos"
+          class="sub-tab"
+          onclick="cambiarTorneo('amistosos')"
+        >
+          🤝 AMISTOSOS
+        </div>
+      </div>
+      <!-- CONTENEDORES DE FIXTURES POR TORNEO -->
+      <div id="vista-palermo" class="torneo-content">
+        <div id="seccion-fixture" class="section-title">
+          ⚽ FIXTURE LIGA PALERMO
+        </div>
+        <div id="fixture-container"></div>
+      </div>
 
-        <div id="seccion-metro" class="torneo-content" style="display: none;">
+      <div id="seccion-metro" class="torneo-content" style="display: none">
         <div class="section-title">🏅 FIXTURE METROPOLITANO</div>
         <div id="contenedor-fixture-metro"></div>
-        </div>    
+      </div>
 
-        <div id="seccion-amistosos" class="torneo-content" style="display: none;">
-        <div class="section-title">🤝 FIXTURE AMISTOSOS</div>
+      <div id="seccion-amistosos" class="torneo-content" style="display: none">
+        <div class="section-title">🤝 AMISTOSOS</div>
         <div id="contenedor-fixture-amistosos"></div>
+      </div>
+      <!-- NAVEGACIÓN DE PESTAÑAS -->
+      <div class="sub-tabs">
+        <div
+          id="btn-tab-tabla"
+          class="sub-tab active"
+          onclick="cambiarTab('tabla')"
+        >
+          📊 TABLA DE POSICIONES
         </div>
-<!-- NAVEGACIÓN DE PESTAÑAS -->
-<div class="sub-tabs">
-  <div id="btn-tab-tabla" class="sub-tab active" onclick="cambiarTab('tabla')">📊 TABLA DE POSICIONES</div>
-  <div id="btn-tab-canchas" class="sub-tab" onclick="cambiarTab('canchas')">📍 Canchas</div>
-</div>
-<!-- CONTENIDO: TABLA DE POSICIONES -->
-<div id="seccion-tabla" class="tab-content">
-  <div class="section-title">📊 TABLA DE POSICIONES</div>
-  <div class="tabla-wrapper">
-    <table class="tabla-posiciones">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>CLUB</th>
-          <th>PJ</th>
-          <th>G</th>
-          <th>E</th>
-          <th>P</th>
-          <th>GD</th>
-          <th>PTS</th>
-        </tr>
-      </thead>
-      <tbody id="body-tabla">
-        <!-- Se llena dinámicamente con JS -->
-      </tbody>
-    </table>
-  </div>
-</div>
+        <div
+          id="btn-tab-canchas"
+          class="sub-tab"
+          onclick="cambiarTab('canchas')"
+        >
+          📍 Canchas
+        </div>
+      </div>
+      <!-- CONTENIDO: TABLA DE POSICIONES -->
+      <div id="seccion-tabla" class="tab-content">
+        <div class="section-title">📊 TABLA DE POSICIONES</div>
+        <div class="tabla-wrapper">
+          <table class="tabla-posiciones">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>CLUB</th>
+                <th>PJ</th>
+                <th>PG</th>
+                <th>PE</th>
+                <th>PP</th>
+                <th>GF</th>
+                <th>GC</th>
+                <th>DG</th>
+                <th>PTS</th>
+              </tr>
+            </thead>
+            <tbody id="body-tabla">
+              <!-- Se llena dinámicamente con JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-<!-- CONTENIDO: LISTADO DE CANCHAS -->
-<div id="seccion-canchas" class="tab-content" style="display: none;">
-  <div class="section-title">📍 CANCHAS</div>
-  <div id="contenedor-canchas">
-    <!-- Se llena dinámicamente con JS -->
-  </div>
-</div>
+      <!-- CONTENIDO: LISTADO DE CANCHAS -->
+      <div id="seccion-canchas" class="tab-content" style="display: none">
+        <div class="section-title">📍 CANCHAS</div>
+        <div id="contenedor-canchas">
+          <!-- Se llena dinámicamente con JS -->
+        </div>
+      </div>
 
-    <!-- SECCIÓN PRÁCTICAS -->
-<div id="seccion-practicas" class="practicas-container">
-  <div class="section-title">🏃 PRÁCTICAS</div>
-  
-  <div id="contenedor-practicas" class="practicas-grid">
-    <!-- Se genera dinámicamente con JS o podés dejarlo estático -->
-  </div>
-</div>
-    
+      <!-- SECCIÓN PRÁCTICAS -->
+      <div id="seccion-practicas" class="practicas-container">
+        <div class="section-title">🏃 PRÁCTICAS</div>
+
+        <div id="contenedor-practicas" class="practicas-grid">
+          <!-- Se genera dinámicamente con JS o podés dejarlo estático -->
+        </div>
+      </div>
     </div>
     <script src="datos.js"></script>
-    </body>
-    </html>
+<!-- MODAL FLOTANTE DE CANCHA -->
+    <div id="modal-cancha" class="modal-overlay" onclick="cerrarModalCancha(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <!-- Botón X para cerrar arriba a la derecha -->
+        <button class="btn-modal-cerrar-x" onclick="cerrarModalCanchaDirecto()" title="Cerrar">&times;</button>
+        
+        <h3 id="modal-titulo-club">CLUB</h3>
+        <p class="modal-cancha-info">
+          📍 <strong style="color: var(--text-main);">Cancha:</strong> 
+          <span id="modal-direccion-cancha">Dirección a confirmar</span>
+        </p>
 
-
-
-    <!-- <div class="card-footer">
-            <div class="btn-ver-partidos">
-                ⚽ VER TODOS LOS PARTIDOS
-            </div>
-            <span class="arrow-icon">▼</span>
-        </div> -->
-    <!-- 
-            <div class="card-footer">
-        <div class="btn-ver-partidos">
-        ⚽ VER TODOS LOS PARTIDOS
+        <div class="modal-actions">
+          <a id="btn-modal-maps" href="#" target="_blank" class="btn-modal btn-modal-maps">
+            📍 Ver en Google Maps
+          </a>
+          <a id="btn-modal-waze" href="#" target="_blank" class="btn-modal btn-modal-waze">
+            🔹 Abrir en Waze
+          </a>
+          <a id="btn-modal-wsp" href="#" target="_blank" class="btn-modal btn-modal-wsp">
+            💬 Compartir por WhatsApp
+          </a>
         </div>
-        <span class="arrow-icon">▼</span>
-        </div> -->
+      </div>
+    </div>
 
+    <!-- MODAL DE CARGAR / EDITAR RESULTADO -->
+    <div id="modal-resultado" class="modal-overlay" onclick="cerrarModalResultado(event)">
+      <div class="modal-content modal-resultado-content" onclick="event.stopPropagation()">
+        <button class="btn-modal-cerrar-x" onclick="cerrarModalResultadoDirecto()">&times;</button>
+        
+        <h3 class="title-modal-res">CARGAR RESULTADO</h3>
+        <p id="modal-res-subtitulo" class="subtitulo-modal-res">Fecha 1 · Local vs Visitante</p>
 
-<!-- Ejemplo Victoria -->
-<!--<span class="badge-resultado victoria">Victoria</span>-->
+        <div class="modal-res-inputs">
+          <div class="input-team-box">
+            <label id="lbl-local">LOCAL</label>
+            <input type="number" id="input-gl" min="0" max="99" value="0" />
+          </div>
+          <span class="dash-res">-</span>
+          <div class="input-team-box">
+            <label id="lbl-visitante">VISITANTE</label>
+            <input type="number" id="input-gv" min="0" max="99" value="0" />
+          </div>
+        </div>
 
-<!-- Ejemplo Derrota -->
-<!--<span class="badge-resultado derrota">Derrota</span>-->
+        <div class="wo-checkbox-container">
+          <label class="wo-label">
+            <input type="checkbox" id="chk-wo" />
+            <span>Resultado por W/O (Walkover)</span>
+          </label>
+        </div>
 
-<!-- Ejemplo Empate -->
-<!--<span class="badge-resultado empate">Empate</span>-->
+        <div class="modal-res-actions">
+          <button class="btn-res-cancelar" onclick="cerrarModalResultadoDirecto()">Cancelar</button>
+          <button class="btn-res-guardar" onclick="guardarResultado()">Guardar ✓</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

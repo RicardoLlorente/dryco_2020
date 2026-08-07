@@ -154,7 +154,7 @@
     /* 2. STATS BAR */
     .stats-bar {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       background-color: var(--card-bg);
       border-radius: 8px;
       padding: 15px 0;
@@ -459,7 +459,7 @@
 
 /* Destacado para tu club */
 .tabla-posiciones tr.mi-club-row {
-  background-color: rgba(255, 102, 0, 0.15) !important;
+  background-color: rgba(0, 0, 255, 0.15) !important;
   color: #ffffff;
   border-left: 4px solid #ffffff;
 }
@@ -502,26 +502,51 @@
 .cancha-actions {
   display: flex;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
+/* ESTILO UNIFICADO Y SOBRIO PARA BOTONES MAPS Y WAZE */
 .btn-map, .btn-waze {
-  padding: 6px 12px;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
   text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: bold;
-  display: inline-block;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background-color: #222222;
+  border: 1px solid #333333;
+  color: var(--text-main); /* Texto blanco limpio (#ffffff) */
+  transition: all 0.2s ease;
 }
 
-.btn-map { background-color: #ffffff; color: #fff; }
-.btn-waze { background-color: #333; color: #fff; border: 1px solid #444; }
+/* Efecto al pasar el cursor */
+.btn-map:hover, .btn-waze:hover {
+  background-color: #2a2a2a;
+  border-color: #555555;
+  color: #ffffff;
+}
 
+/* SECCIÓN TIPS DE LA CANCHA */
+.cancha-tip-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #777777;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
 .cancha-tip {
-  font-size: 0.8rem;
-  color: #aaa;
+font-size: 0.8rem;
+  color: #cccccc;
   margin: 0;
-  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* Wrapper contenedor de la tabla para fondo oscuro y bordes redondeados */
@@ -570,14 +595,13 @@
 
 /* Fila de Dryco destacada */
 .tabla-posiciones tr.mi-club-row {
-  background-color: rgba(255, 102, 0, 0.12) !important;
-  border-left: 4px solid #ff6600;
+  background-color: rgba(254, 254, 254, 0.12) !important;
+  border-left: 4px solid #ffffff;
 }
 
 .tabla-posiciones tr.mi-club-row .club-nombre {
-  color: #ff6600;
+  color: #fcfcfc;
 }
-
 
 /* --- Sección Prácticas --- */
 .practicas-container {
@@ -603,9 +627,9 @@
 }
 
 .practica-dia {
-  color: #ffcc00; /* Amarillo brillante para el día */
+  color: #ffcc00; /* Amarillo del título */
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   letter-spacing: 1px;
   margin: 0;
   text-transform: uppercase;
@@ -614,7 +638,7 @@
 .practica-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: #eee;
   font-size: 0.95rem;
 }
@@ -623,37 +647,348 @@
   color: #aaa;
 }
 
-/* Botones con los colores idénticos a la imagen */
+/* Botonera */
 .practica-actions {
   display: flex;
   gap: 10px;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .btn-practica {
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: bold;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  transition: opacity 0.2s;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-family: 'Bebas Neue', sans-serif; /* Mantiene el estilo deportivo del sitio */
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 .btn-practica:hover {
   opacity: 0.85;
 }
 
-/* Botón Maps Verde */
-.btn-maps {
-  background-color: #2eac54;
+/* Color verde para Google Maps */
+.btn-maps { 
+  background-color: #34a853; 
+  color: #ffffff !important; 
+}
+
+/* Color cian para Waze */
+.btn-waze-cyan {
+  background-color: #00c3e3;
+  color: #000000 !important;
+}
+
+.btn-practica svg {
+  display: block;
+}
+
+.fecha-date-centered {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+/* --- ESTILOS DEL ALFILER Y MODAL DE CANCHA --- */
+.pin-cancha {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.9rem;
+  transition: transform 0.15s ease;
+}
+
+.pin-cancha:hover {
+  transform: scale(1.3);
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-overlay.activo {
+  display: flex;
+}
+
+.modal-content {
+  position: relative; /* Para posicionar la X dentro */
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 380px;
+  padding: 24px 24px 20px 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Botón X de cierre arriba a la derecha */
+.btn-modal-cerrar-x {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #888888;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.1s ease;
+  padding: 4px;
+}
+
+.btn-modal-cerrar-x:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.modal-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--text-main);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.modal-cancha-info {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-modal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alineado a la izquierda */
+  gap: 12px;
+  padding: 12px 18px; /* Padding para buen margen interno */
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.btn-modal:hover {
+  opacity: 0.9;
+  transform: translateX(2px); /* Pequeño desplazamiento sutil al pasar el mouse */
+}
+
+.btn-modal-maps {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border: 1px solid #444444;
+}
+
+.btn-modal-waze {
+  background-color: #00c3e3;
+  color: #000000;
+}
+
+.btn-modal-wsp {
+  background-color: #25d366;
   color: #ffffff;
 }
 
-/* Botón Waze Celeste Cyan */
-.btn-waze-cyan {
-  background-color: #00bcd4;
-  color: #000000;
+.btn-modal-cerrar {
+  width: 100%;
+  padding: 10px;
+  background-color: #282828;
+  border: 1px solid #333333;
+  color: #888888;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-modal-cerrar:hover {
+  color: #ffffff;
+  background-color: #333333;
+}
+
+
+/* BADGE W/O (VERDE) */
+.badge-resultado.wo, .badge-wo {
+  background-color: rgba(46, 125, 50, 0.25);
+  color: #4caf50;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* BOTÓN DE TRES PUNTOS (...) */
+.btn-edit-match {
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  color: #888888;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-edit-match:hover {
+  color: #ffffff;
+  border-color: var(--orange, #e65100);
+  background-color: #252525;
+}
+
+/* LOCALES EN NEGRITA EN LA LISTA DESPLEGABLE */
+.partido-row .local-team {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.partido-row .visit-team {
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+/* RESALTE ELEGANTE DE DRYCO (Mantiene alineación perfecta) */
+.partido-row.destacado {
+  background-color: #222222;
+  /*box-shadow: inset 3px 0 0 0 #666666; /* Borde interno sin desplazar el texto */
+}
+
+.partido-row.destacado .local-team,
+.partido-row.destacado .visit-team {
+  color: #ffffff;
+}
+/* --- MODAL DE CARGAR RESULTADO --- */
+.modal-resultado-content {
+  text-align: center;
+  max-width: 360px;
+}
+
+.title-modal-res {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: #e65100;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.subtitulo-modal-res {
+  font-size: 0.8rem;
+  color: #888888;
+  margin-bottom: 20px;
+}
+
+.modal-res-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.input-team-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.input-team-box label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #aaa;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input-team-box input[type="number"] {
+  width: 70px;
+  height: 70px;
+  background-color: #111111;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.dash-res {
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 15px;
+}
+
+.wo-checkbox-container {
+  margin-bottom: 20px;
+}
+
+.wo-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #bbb;
+  cursor: pointer;
+}
+
+.modal-res-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-res-cancelar {
+  flex: 1;
+  padding: 10px;
+  background-color: #2b2b2b;
+  border: 1px solid #444;
+  color: #ccc;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-res-guardar {
+  flex: 1;
+  padding: 10px;
+  background-color: #e65100;
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
 }
